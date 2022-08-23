@@ -88,3 +88,51 @@ Implementação:
         }
         return false;
     }
+
+
+### Pesquisa BINÁRIA
+
+A pesquisa binária funciona **apenas** com coleções ordenadas. 
+
+Reduz drasticamente o tempo de busca.
+
+Como funciona?
+
+Como o array está ordenado a comparação pode começar a ser feita com o elemento do meio do array. Se a chave procurada for maior que o elemento do meio então faz o mesmo para a metade direita (maiores) do array, senão faz o mesmo para a metade esquerda (menores do array) e assim por diante até encontrar o elemento.
+
+O algoritmo mantém dois valores: low e high. Esses definem o intervalo atual da pesquisa.
+Inicialmente low e high serão 0 e tamanho da coleção-1. Nesse exemplo low = 0 e high = 15.
+
+_Pesquisar o valor 22:_
+
+Comparação é feita com o elemento no meio do intervalo.
+
+![img.png](img.png)
+
+
+- mid = (low+high) / 2 (arredondar para baixo)
+- mid = (0 + 15) /2, então mid = 7
+- Elemento array[7] = 14.
+
+Repetir o processo:
+
+- mid = (8 + 15) / 2 = 11
+- array[11] = 25 --> nao achou. 22 é menor que 25, então high = mid-1
+
+Repetir o processo:
+- mid = (8 + 11) / 2 = 9
+- array[9] = 19 --> nao achou. 22 é maior que 19, então high=mid+1 
+
+Repetir o processo:
+- mid = (9 + 11) / 2 = 10 
+- array[10] = 22 --> ACHOU!!!
+ 
+
+Implementação:
+
+
+
+
+Links adicionais:
+
+
