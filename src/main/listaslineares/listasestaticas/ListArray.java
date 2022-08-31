@@ -43,6 +43,7 @@ public class ListArray implements ListTAD {
         count = 0;
     }
 
+
     /**
      * Retorna true se a lista nao contem elementos.
      *
@@ -84,7 +85,14 @@ public class ListArray implements ListTAD {
     @Override
     public void add(int index, int element) {
         //implementar
-
+        if (( index < 0) || (index > count) ) {
+            throw new IndexOutOfBoundsException ( ) ;
+        }
+        if(count == data.length)
+            setCapacity(data.length * 2 ) ;
+        for(int i=count-1; i>=index ; i--) data [ i+1] = data [ i ] ;
+        data [index] = element ;
+        count++;
     }
 
     /**

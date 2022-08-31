@@ -4,8 +4,27 @@ import java.util.List;
 
 public class AppListaArray {
     public static void main(String[] args) {
-        System.out.println("Demonstração do ListArray");
+        System.out.println("Demonstracao do ListArray");
 
+        ListArray minhaLista = new ListArray(3);
+        minhaLista.add(200);
+        minhaLista.add(500);
+        minhaLista.add(900);
+        minhaLista.add(56);
+
+        minhaLista.add(0, 666);
+
+        System.out.println(minhaLista);
+        System.out.println(minhaLista.size());
+
+        System.out.println(minhaLista.get(3));
+
+
+
+
+
+
+        /*
         ListArray lista = new ListArray();
         lista.add(2);
         lista.add(4);
