@@ -1,4 +1,6 @@
 
+_Os códigos contigos nesse repo são para fins didáticos. Alguns apresentam bugs propositais que são corrigidos pelos estudantes em aula._
+
 ### Lista Simplesmente Encadeada
 
 Encadeamento simples.
