@@ -1,4 +1,4 @@
-package listasencadeadas.simples;
+package listaslineares.listasencadeadas.simples;
 
 public class AppDemo1 {
     public static void main(String[] args) {
