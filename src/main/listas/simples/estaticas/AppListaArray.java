@@ -1,6 +1,4 @@
-package listasestaticas;
-
-import java.util.List;
+package listas.simples.estaticas;
 
 public class AppListaArray {
     public static void main(String[] args) {

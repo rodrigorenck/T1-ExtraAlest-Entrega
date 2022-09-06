@@ -1,6 +1,6 @@
-package listaslineares.listasencadeadas.simples;
+package listas.simples.encadeadas;
 
-public class TesteBugs3 {
+public class Teste {
 
     public static void main(String[] args) {
         ListaSimplesmenteEncadeada lista = new ListaSimplesmenteEncadeada();
@@ -17,5 +17,16 @@ public class TesteBugs3 {
         //removendo primeiro elemento
         lista.remover(60);
         System.out.println(lista);
+
+        lista.remover(50);
+        System.out.println(lista);
+
+        lista.remover(40);
+        System.out.println(lista);
+        System.out.println(lista.tamanho());
+
+        lista.remover(50);
+        System.out.println(lista);
+        System.out.println(lista.tamanho());
     }
 }

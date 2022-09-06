@@ -1,4 +1,4 @@
-package listasestaticas;
+package listas.simples.estaticas;
 
 // Interface ListTAD:
 // Define os métodos que qualquer implementação

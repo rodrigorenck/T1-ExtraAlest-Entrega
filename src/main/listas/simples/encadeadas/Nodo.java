@@ -1,4 +1,4 @@
-package listaslineares.listasencadeadas.simples;
+package listas.simples.encadeadas;
 
 public class Nodo {
     public int elemento;

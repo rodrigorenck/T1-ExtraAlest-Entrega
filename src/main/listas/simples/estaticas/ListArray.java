@@ -1,6 +1,4 @@
-package listasestaticas;
-
-import listasestaticas.ListTAD;
+package listas.simples.estaticas;
 
 /**
  * Classe que implementa uma lista linear usando arranjo.
@@ -80,18 +78,17 @@ public class ListArray implements ListTAD {
      *
      * @param index   posição a inserir o novo elemento
      * @param element elemento a ser adicionado
-     *
      */
     @Override
     public void add(int index, int element) {
         //implementar
-        if (( index < 0) || (index > count) ) {
-            throw new IndexOutOfBoundsException ( ) ;
+        if ((index < 0) || (index > count)) {
+            throw new IndexOutOfBoundsException();
         }
-        if(count == data.length)
-            setCapacity(data.length * 2 ) ;
-        for(int i=count-1; i>=index ; i--) data [ i+1] = data [ i ] ;
-        data [index] = element ;
+        if (count == data.length)
+            setCapacity(data.length * 2);
+        for (int i = count - 1; i >= index; i--) data[i + 1] = data[i];
+        data[index] = element;
         count++;
     }
 
@@ -166,9 +163,11 @@ public class ListArray implements ListTAD {
      */
     public boolean contains(int element) {
         //implementar
+        for (int i = 0; i < count; i++) {
+            if (data[i] == element) return true;
+        }
         return false;
     }
-
 
 
     /**
@@ -177,9 +176,28 @@ public class ListArray implements ListTAD {
      * @param element elemento a ser removido
      * @return true se encontrar e remover o elemento
      */
+    /**
+     * Autor: Rodrigo Renck
+     */
     @Override
     public boolean remove(int element) {
-        //implementar
+        //remover do fim
+        if (data[count - 1] == element) {
+            data[count - 1] = 0;
+            count--;
+            return true;
+        }
+        for (int i = 0; i < count; i++) {
+            if (data[i] == element) {
+                int aux = i;
+                for (int j = i + 1; j <= count - 1; j++) {
+                    data[aux] = data[j];
+                    data[j] = data[j + 1];
+                    aux++;
+                }
+                count--;
+            }
+        }
         return false;
     }
 
@@ -189,17 +207,38 @@ public class ListArray implements ListTAD {
      * @param e elemento a ser encontrado
      * @return posição do elemento ou -1 se não encontrar
      */
+    /**
+     * Autor: Rodrigo Renck
+     */
     @Override
     public int indexOf(int e) {
         //implementar
+        int posicao = 0;
+        for(int i = 0; i< count; i++){
+            if(data[i] == e){
+                return posicao;
+            }
+            posicao++;
+        }
         return -1;
     }
 
     /**
      * Inverte o conteúdo da lista
      */
+    /**
+     * Autor: Rodrigo Renck
+     */
     public void reverse() {
         //implementar
+        int aux = 0;
+        int temp = 0;
+        for(int i = count-1; i>1; i--){
+            temp = data[aux];
+            data[aux] = data[i];
+            data[i] = temp;
+            aux++;
+        }
     }
 
     /**
@@ -220,7 +259,7 @@ public class ListArray implements ListTAD {
      * @param element elemento a ser inserido
      */
     public void addIncreasingOrder(int element) {
-        //implementar
+        //implementar -> nao deu tempo de fazer :(
     }
 
     /**
@@ -230,6 +269,6 @@ public class ListArray implements ListTAD {
      * @param element elemento a ser inserido
      */
     public void addDecreasingOrder(int element) {
-        //implementar
+        //implementar -> nao deu tempo de fazer :(
     }
 }

@@ -1,4 +1,4 @@
-package listaslineares.listasencadeadas.simples;
+package listas.simples.encadeadas;
 
 public class ListaSimplesmenteEncadeada {
 
@@ -50,6 +50,9 @@ public class ListaSimplesmenteEncadeada {
         }
     }
 
+    /**
+     * Autor: Rodrigo Renck
+     */
     public void remover(int elemento) {
         Nodo paux1 = inicio;
         Nodo paux = inicio;
@@ -61,7 +64,7 @@ public class ListaSimplesmenteEncadeada {
             return;
         }
         //logica para descobrir se o elemento esta na lista
-        //se ele estiver entao o cont sera maior que 0, se o cont estiver igual a 0 o elemento nao esta entao retornamos
+        //se ele estiver entao o cont sera maior que 0
         int cont = 0;
         while (paux1.proximo != null) {
             if (paux1.elemento == elemento) {
@@ -73,14 +76,19 @@ public class ListaSimplesmenteEncadeada {
         if (fim.elemento == elemento) {
             cont++;
         }
-//        System.out.println(fim.elemento);
-//        System.out.println(quantidade);
-//        System.out.println(cont);
+        //se o cont estiver igual a 0 o elemento nao esta na lista entao retornamos
         if (cont == 0) {
             return;
         }
 
         while (paux.proximo != null) {
+            //remove do fim
+            if (paux.proximo.proximo == null) {
+                paux.proximo = null;
+                fim = paux;
+                quantidade--;
+                return;
+            }
             //remove do meio
             if (paux.proximo.elemento == elemento) {
                 Nodo elementoParaRemover = paux.proximo;
@@ -88,21 +96,45 @@ public class ListaSimplesmenteEncadeada {
                 quantidade--;
                 return;
             }
+            //vai para o proximo elemento
+            paux = paux.proximo;
+        }
+    }
+
+    /**
+     * Autor: Rodrigo Renck
+     */
+    public void removerPelaPosicao(int posicao) {
+        if ((posicao < 0) || (posicao >= quantidade)) {
+            throw new IndexOutOfBoundsException("Não é possível remover na posição " + posicao);
+        }
+        Nodo paux = inicio;
+        //remove do inicio
+        if(posicao == 0){
+            inicio = inicio.proximo;
+            quantidade--;
+            return;
+        }
+        int cont = 1;
+        while (paux.proximo != null) {
             //remove do fim
             if (paux.proximo.proximo == null) {
                 paux.proximo = null;
+                fim = paux;
+                quantidade--;
+                return;
+            }
+            //remove do meio
+            if (cont == posicao) {
+                Nodo elementoParaRemover = paux.proximo;
+                paux.proximo = elementoParaRemover.proximo; //aponta para o cara depois do elemento
                 quantidade--;
                 return;
             }
             //vai para o proximo elemento
             paux = paux.proximo;
+            cont++;
         }
-//        paux.proximo = null;
-//        quantidade--;
-    }
-
-    public void removerPelaPosicao(int posicao) {
-        //implementar
     }
 
     public int ler(int posicao) {
@@ -114,8 +146,32 @@ public class ListaSimplesmenteEncadeada {
         return paux.elemento;
     }
 
+    /**
+     * Autor: Rodrigo Renck
+     */
     public void escrever(int posicao, int elemento) {
-        //implementar
+        if ((posicao < 0) || (posicao >= quantidade)) {
+            throw new IndexOutOfBoundsException("Não é possível escrever na posição " + posicao);
+        }
+        Nodo paux = inicio;
+        //escreve no inicio
+        if(posicao == 0){
+            inicio.elemento = elemento;
+            return;
+        }
+        int cont = 0;
+        while(paux.proximo != null){
+            //escreve no meio
+            if (cont == posicao) {
+                paux.elemento = elemento;
+                return;
+            }
+            paux = paux.proximo;
+            cont++;
+        }
+        //caso ele chegue nesse ponto do codigo entao eh pra escrever no ultimo elemento
+        //escreve no fim
+        fim.elemento = elemento;
     }
 
     public int tamanho() {
